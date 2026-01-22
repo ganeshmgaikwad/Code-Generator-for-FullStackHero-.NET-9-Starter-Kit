@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using MediatR;
-
+using Mapster;
 namespace [Root_Namespace].[Module_Namespace].[Module].Application.[EntitySet].Create.v1;
 
 public sealed record Create[Entity]Command(
-  [PropertyConstructor]
+  [CreatePropertyConstructor]
     ) : IRequest<Create[Entity]Response>;

@@ -3,6 +3,7 @@ using [Root_Namespace].[Module_Namespace].[Module].Domain;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Mapster;
 
 namespace [Root_Namespace].[Module_Namespace].[Module].Application.[EntitySet].Create.v1;
 public sealed class Create[Entity]Handler(ILogger<Create[Entity]Handler> logger, [FromKeyedServices("[ServiceKey]")] IRepository<[Entity]> repository) : IRequestHandler<Create[Entity]Command, Create[Entity]Response>
@@ -10,7 +11,7 @@ public sealed class Create[Entity]Handler(ILogger<Create[Entity]Handler> logger,
     public async Task<Create[Entity]Response> Handle(Create[Entity]Command request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var [Entity_] = [Entity].Create([RequestFields]);
+        var [Entity_] = [Entity].Create([CreateFields]);
 		
         await repository.AddAsync([Entity_], cancellationToken);
         logger.LogInformation("[Entity_] created {EntityId}", [Entity_PropertyId]);

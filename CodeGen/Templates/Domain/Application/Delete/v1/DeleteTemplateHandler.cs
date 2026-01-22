@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace [Root_Namespace].[Module_Namespace].[Module].Application.[EntitySet].Delete.v1;
-
+//*** Deleting child entities required loading all parents and children to maintain referential integrity. ***
+//*** e.g. FirstOrDefaultAsync(spec) where spec includes all necessary related entities. ***
+//*** Entity Configuration must use DeleteBehavior.ClientCascade where appropriate. ***
 public sealed class Delete[Entity]Handler(ILogger<Delete[Entity]Handler> logger,[FromKeyedServices("[ServiceKey]")] IRepository<[Entity]> repository):IRequestHandler<Delete[Entity]Command>
 {
     public async Task Handle(Delete[Entity]Command request, CancellationToken cancellationToken)

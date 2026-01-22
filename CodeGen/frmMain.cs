@@ -38,7 +38,7 @@ namespace CodeGen
             {
                 txtFileNameCore.Text = xtraOpenFileDialog1.FileName;
                 var subkey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MiruLogic\CodeGen");
-                subkey.SetValue("FrameWorkPath", txtFileNameDomain.Text);
+                subkey.SetValue("FrameWorkPath", txtFileNameCore.Text);
             }
         }
 
